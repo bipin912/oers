@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:oers/ui/auth/login_screen.dart';
 import 'package:oers/widgets/round_button.dart';
@@ -19,6 +20,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
 
   FirebaseAuth _auth = FirebaseAuth.instance;
+  DatabaseReference ref = FirebaseDatabase.instance.ref('Users');
 
   @override
   void dispose() {
@@ -36,6 +38,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
         email: emailController.text.toString(),
         password: passwordController.text.toString())
         .then((value) {
+
+          ref.child(value.user!.uid.toString()).set({
+            'userid': value.user!.uid.toString(),
+            'email':value.user!.email.toString(),
+            'onlineStatus':'noone',
+            'phone':"",
+
+
+          }).then((value){
+            loading=false;
+
+          }).onError((error, stackTrace){
+            loading=false;
+          });
       setState(() {
         loading= false;
       });

@@ -13,15 +13,22 @@ class bio extends StatefulWidget {
 
 class _bioState extends State<bio> {
 
-  final bioController = TextEditingController();
+  final usernameController = TextEditingController();
+  final agecontroller=TextEditingController();
+  final gamecontroller=TextEditingController();
+  final rankcontroller=TextEditingController();
+  final levelcontroller=TextEditingController();
+
 
   bool loading = false;
 
-  final databaseRef = FirebaseDatabase.instance.ref('Bio');
+  final databaseRef = FirebaseDatabase.instance.ref('bio');
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text('Add Bio'),
       ),
@@ -33,9 +40,40 @@ class _bioState extends State<bio> {
               height: 30,
             ),
             TextFormField(
-              controller: bioController,
+              controller: usernameController,
               decoration: InputDecoration(
                   hintText: 'Username', border: OutlineInputBorder()),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            TextFormField(
+              controller: agecontroller,
+              decoration: InputDecoration(
+                  hintText: 'Age', border: OutlineInputBorder()),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            TextFormField(
+              controller: gamecontroller,
+              decoration: InputDecoration(
+                  hintText: 'Game', border: OutlineInputBorder()),
+            ),SizedBox(
+              height: 30,
+            ),
+            TextFormField(
+              controller: rankcontroller,
+              decoration: InputDecoration(
+                  hintText: 'Rank', border: OutlineInputBorder()),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            TextFormField(
+              controller: levelcontroller,
+              decoration: InputDecoration(
+                  hintText: 'level', border: OutlineInputBorder()),
             ),
             SizedBox(
               height: 30,
@@ -47,9 +85,14 @@ class _bioState extends State<bio> {
                   setState(() {
                     loading=true;
                   });
-                databaseRef.child(DateTime.now().millisecondsSinceEpoch.toString()).set({
-              'Username': bioController.text.toString(),
-                  'id': DateTime.now().millisecondsSinceEpoch.toString()
+                databaseRef.set({
+
+              'Username': usernameController.text.toString(),
+                  'Age': agecontroller.text.toString(),
+                  'Game':gamecontroller.text.toString(),
+                  'Rank':rankcontroller.text.toString(),
+                  'level':levelcontroller.text.toString(),
+                  'id': DateTime.now().millisecondsSinceEpoch.toInt()
             }).then((value){
                   Utils().toastMessage('Bio Updated');
                   setState(() {
@@ -67,5 +110,13 @@ class _bioState extends State<bio> {
         ),
       ),
     );
+    // Future<void> showUserNameDialogAlert(BuildContext){
+    //   return showDialog(context: context,
+    //       builder:(context){
+    //     return AlertDialog();
+    //
+    //       });
+    //
+    // }
   }
 }
