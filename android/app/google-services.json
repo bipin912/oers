@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "543011845883",
+    "firebase_url": "https://oers-fe141-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "oers-fe141",
+    "storage_bucket": "oers-fe141.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543011845883:android:52b04b718adb635577e25e",
+        "android_client_info": {
+          "package_name": "com.example.oers"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543011845883-j7tafq4hlkv3i5njk6u6ungvs9euca9t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC44C7StSxLAzZT5obNytRsVBvCs7Zpyjw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543011845883-j7tafq4hlkv3i5njk6u6ungvs9euca9t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
